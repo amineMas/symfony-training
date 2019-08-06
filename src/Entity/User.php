@@ -65,6 +65,11 @@ class User implements UserInterface
      */
     private $birthDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Training", inversedBy="training")
+     */
+    private $training;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -206,6 +211,18 @@ class User implements UserInterface
     public function setBirthDate(\DateTimeInterface $birthDate): self
     {
         $this->birthDate = $birthDate;
+
+        return $this;
+    }
+
+    public function getTraining(): ?Training
+    {
+        return $this->training;
+    }
+
+    public function setTraining(?Training $training): self
+    {
+        $this->training = $training;
 
         return $this;
     }
