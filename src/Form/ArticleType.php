@@ -2,28 +2,24 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
-class UserType extends AbstractType
+class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('password', PasswordType::class)
-            ->add('prenom')
-            ->add('nom')
-            ->add('email')
-            ->add('city')
-            ->add('zipCode')
-            ->add('birthDate')
+            ->add('title')
+            ->add('description')
+            ->add('image')
+            ->add('addDate')
+            ->add('categorie')
             ->add('submit', SubmitType::class, [
-                'label' => "S'enregistrer"
+                'label' => "Ajouter l'article"
             ])
         ;
     }
@@ -31,8 +27,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
-            
+            'data_class' => Article::class,
         ]);
     }
 }

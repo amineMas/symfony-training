@@ -32,7 +32,7 @@ class UserController extends AbstractController
 
 
      /**
-     * @Route("/inscription", name="inscription")
+     * @Route("/registration", name="registration")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
@@ -55,7 +55,7 @@ class UserController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('');
+            return $this->redirectToRoute('profile');
         }
 
         return $this->render('user/register.html.twig', [
@@ -63,6 +63,11 @@ class UserController extends AbstractController
         ]);
     }
 
-
-
+    /**
+     * @Route("/connexion", name="connexion")
+     */
+    public function connexion()
+    {
+        
+    }
 }

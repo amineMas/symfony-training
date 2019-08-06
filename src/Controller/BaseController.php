@@ -19,6 +19,14 @@ class BaseController extends AbstractController
     }
 
     /**
+     * about
+     * @Route("/about/", name="about")
+     */
+    public function about(){
+        return $this->render('base/about.html.twig');
+    }
+
+    /**
      * contacts
      * @Route("/contacts/", name="contacts")
      */
