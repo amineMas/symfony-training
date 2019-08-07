@@ -13,13 +13,13 @@
 
 {% block body %}
 
-{{ dump(user) }}
-{% for user in training.users   %}
-{{  user.username}} A acheté ce training
-{%  endfor %}
+
+
 
 C'est la page d'accueil
 
+
+<a href="{{ path('admin_home') }}" class="btn btn-success"> Aller sur le back-office <a>
 
 {#
 <div class="slide-one-item home-slider owl-carousel">

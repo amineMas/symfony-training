@@ -19,11 +19,12 @@ class AdminTrainingController extends AbstractController
     public function trainingList()
     {
         // 1) retrieve all trainingtraining
-
+        $repository = $this->getDoctrine()->getRepository(Training::class);
+        $trainings = $repository->findAll();
 
         // 2) display render
         return $this->render('admin_training/list.html.twig', [
-            'controller_name' => 'AdminArticleController',
+            'trainings' => $trainings,
         ]);
     }
 

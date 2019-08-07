@@ -18,11 +18,12 @@ class AdminUserController extends AbstractController
     public function userList()
     {
         // 1) retrieve all users
-
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $users = $repository->findAll();
 
         // 2) display render
         return $this->render('admin_user/list.html.twig', [
-            'controller_name' => 'AdminuserController',
+            'users' => $users,
         ]);
     }
 

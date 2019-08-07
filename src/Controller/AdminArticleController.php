@@ -20,10 +20,12 @@ class AdminArticleController extends AbstractController
     {
         // 1) retrieve all articles
 
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+        $articles = $repository->findAll();
 
         // 2) display render
         return $this->render('admin_article/list.html.twig', [
-            'controller_name' => 'AdminArticleController',
+            'articles' => $articles,
         ]);
     }
 
@@ -33,10 +35,12 @@ class AdminArticleController extends AbstractController
      */
     public function articleAdd(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         //create a new object
-
+        $article = new Article();
+        
         //create form
-
+        $form = $this->createForm(ArticleType::class, $article);
         //traiter info formulaire
 
         // display render

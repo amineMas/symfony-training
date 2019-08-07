@@ -50,4 +50,15 @@ class BaseController extends AbstractController
         return $this->render('base/legal_notice.html.twig');
     }
 
+    /**
+     * home  back-office 
+     * @Route("/admin/", name="admin_home")
+     */
+    public function adminHome()
+    {
+        return $this->render('base/back_office.html.twig', [
+            'controller_name' => 'BaseController',
+        ]);
+    }
+
 }
