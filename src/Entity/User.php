@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
  */
 class User implements UserInterface
 {
@@ -36,22 +36,22 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=25)
+     * @ORM\Column(type="string", length=30)
      */
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=30)
      */
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(type="string", length=100)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=100)
      */
     private $city;
 
@@ -66,9 +66,14 @@ class User implements UserInterface
     private $birthDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Training", inversedBy="training")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Training", inversedBy="users")
      */
-    private $training;
+    private $Trainings;
+
+    public function __construct()
+    {
+        $this->Trainings = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -215,14 +220,28 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getTraining(): ?Training
+    /**
+     * @return Collection|Training[]
+     */
+    public function getTrainings(): Collection
     {
-        return $this->training;
+        return $this->Trainings;
     }
 
-    public function setTraining(?Training $training): self
+    public function addTraining(Training $training): self
     {
-        $this->training = $training;
+        if (!$this->Trainings->contains($training)) {
+            $this->Trainings[] = $training;
+        }
+
+        return $this;
+    }
+
+    public function removeTraining(Training $training): self
+    {
+        if ($this->Trainings->contains($training)) {
+            $this->Trainings->removeElement($training);
+        }
 
         return $this;
     }

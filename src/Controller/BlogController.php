@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Article;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BlogController extends AbstractController
 {
@@ -14,9 +15,15 @@ class BlogController extends AbstractController
      */
     public function blogList()
     {
+        //1 retrieve all articles
+
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+        $articles = $repository->findAll();
+
         return $this->render('blog/all_articles.html.twig', [
-            'controller_name' => 'BlogController',
+            'articles' => $articles
         ]);
+        
     }
 
     /**
@@ -25,7 +32,16 @@ class BlogController extends AbstractController
      * localhost:8000/blog/training_articles/
      */
     public function trainingArticles(){
-        return $this->render('blog/training_articles.html.twig');
+
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+
+        // we search articles with categorie : training
+        $trainingArt = $repository->findBy(
+            ['categorie' => 'training']
+        );
+
+        return $this->render( 'blog/training_articles.html.twig', ['articles' => $trainingArt] );
+
     }
 
     /**
@@ -34,7 +50,16 @@ class BlogController extends AbstractController
      * localhost:8000/blog/diet_articles/
      */
     public function dietArticles(){
-        return $this->render('blog/diet_articles.html.twig');
+
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+
+        // we search articles with categorie : diet
+        $trainingDiet = $repository->findBy(
+            ['categorie' => 'diet']
+        );
+
+        return $this->render('blog/diet_articles.html.twig', ['articles' => $trainingDiet] );
+
     }
 
     /**
@@ -43,6 +68,19 @@ class BlogController extends AbstractController
      * localhost:8000/blog/stereotypes_articles/
      */
     public function stereotypesArticles(){
-        return $this->render('blog/stereotypes_articles.html.twig');
+
+        $repository = $this->getDoctrine()->getRepository(Article::class);
+
+        // we search articles with categorie : stereotype
+        $trainingStereo = $repository->findBy(
+            ['categorie' => 'stereotype']
+        );
+
+        return $this->render('blog/stereotypes_articles.html.twig', ['articles' => $trainingStereo ]);
     }
+
+    /**
+     * 
+     * @Route("/")
+     */
 }

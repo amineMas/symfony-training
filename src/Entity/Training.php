@@ -39,14 +39,15 @@ class Training
     private $addDate;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="training")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="Trainings")
      */
-    private $training;
+    private $users;
 
     public function __construct()
     {
-        $this->training = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -104,29 +105,26 @@ class Training
     /**
      * @return Collection|User[]
      */
-    public function getTraining(): Collection
+    public function getUsers(): Collection
     {
-        return $this->training;
+        return $this->users;
     }
 
-    public function addTraining(User $training): self
+    public function addUser(User $user): self
     {
-        if (!$this->training->contains($training)) {
-            $this->training[] = $training;
-            $training->setTraining($this);
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addTraining($this);
         }
 
         return $this;
     }
 
-    public function removeTraining(User $training): self
+    public function removeUser(User $user): self
     {
-        if ($this->training->contains($training)) {
-            $this->training->removeElement($training);
-            // set the owning side to null (unless already changed)
-            if ($training->getTraining() === $this) {
-                $training->setTraining(null);
-            }
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            $user->removeTraining($this);
         }
 
         return $this;

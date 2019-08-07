@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Training;
 use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -69,5 +70,31 @@ class UserController extends AbstractController
     public function connexion()
     {
         
+    }
+
+
+    /**
+     * @Route("/achat/{idTraining}", name="achat")
+     */
+    public function achat($idTraining)
+    {
+       // $user = $this -> getUser(); // utilisateur connecté
+
+        // Attention : A supprimer une fois que l'on pourra se connecter
+        $em = $this -> getDoctrine() -> getManager();
+        $user = $em -> find(User::class, 35);
+
+        $training = $em -> find(Training::class, $idTraining);
+
+        $user -> addTraining($training);
+        $em -> persist($user);
+        $em -> flush();
+        
+        return $this -> render('base/index.html.twig', [
+            'user' => $user,
+            'training' => $training
+        ]);
+
+       
     }
 }

@@ -13,6 +13,10 @@
 
 {% block body %}
 
+{{ dump(user) }}
+{% for user in training.users   %}
+{{  user.username}} A acheté ce training
+{%  endfor %}
 
 C'est la page d'accueil
 
