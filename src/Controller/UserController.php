@@ -35,28 +35,25 @@ class UserController extends AbstractController
      /**
      * @Route("/registration", name="registration")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function register(Request $request, UserPasswordEncoderInterface $encoder)
     {
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserType::class, $user, array());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $form->get('password')->getData()
-                )
-            );
+            //crypter le mdp
+            $password_crypte = $encoder -> encodePassword($user, $user ->getPassword());
+            $user -> setPassword($password_crypte);
 
+            // enregistrer dans la BDD
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('profile');
+            return $this->redirectToRoute('login');
         }
 
         return $this->render('user/register.html.twig', [
@@ -64,14 +61,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/connexion", name="connexion")
-     */
-    public function connexion()
-    {
-        
-    }
-
+    
 
     /**
      * @Route("/achat/{idTraining}", name="achat")

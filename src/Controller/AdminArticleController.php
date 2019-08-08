@@ -42,9 +42,21 @@ class AdminArticleController extends AbstractController
         //create form
         $form = $this->createForm(ArticleType::class, $article);
         //traiter info formulaire
+        $form->handleRequest($request);
+
+        if($form -> isSubmitted() && $form -> isValid()){
+            $em-> persist($article);
+                
+            $em -> flush(); // Exécute l'insertion en BDD
+            
+            $this -> addFlash('success', 'L\'article '. $article -> getTitle() . ' a bien été modifié ajouté');
+            return $this -> redirectToRoute('admin_article');
+        } 
 
         // display render
-        return $this->render('admin_article/form.html.twig');
+        return $this->render('admin_article/form.html.twig',[
+            'articleForm' => $form -> createView(),
+        ]);
     }
 
     /**
@@ -54,13 +66,29 @@ class AdminArticleController extends AbstractController
     public function articleUpdate($id, Request $request)
     {
         //retrieve article you want to update
-
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->find(Article::class,$id);
         //create form
-
+        $form = $this->createForm(ArticleType::class, $article);
         //traiter info formulaire
+        $form = handleRequest($request);
 
+        if($form -> isSubmitted() && $form -> isValid()){
+            $em-> persist($article);
+                if($article -> getFile() != NULL){
+                    $article -> removePhoto();
+                    $article -> uploadPhoto();
+                }
+            
+            $em -> flush(); // Exécute l'insertion en BDD
+            
+            $this -> addFlash('success', 'L\'article '. $article -> getTitle() . ' a bien été modifié');
+            return $this -> redirectToRoute('admin_article');
+            }    
         // display render
-        return $this->render('admin_article/form.html.twig');
+        return $this->render('admin_article/form.html.twig',[
+            'articleForm' => $form -> createView(),
+        ]);
     }
 
     /**
@@ -70,8 +98,12 @@ class AdminArticleController extends AbstractController
     public function articleDelete($id, Request $request)
     {
         //retrieve article you want to delete ($id)
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository(Article::class)->find($id);
 
-        //delete product
+        //delete article
+        $em->remove($article);
+        $em->flush();
 
         // message + redirection
         $this->addFlash('success', 

@@ -102,8 +102,18 @@
                       </li>
                       <li><a href="{{ path('about') }}">A propos</a></li>
                       
+                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+
                       <li><a href="{{ path('registration') }}">S'inscrire</a></li>
-                      <li><a href="contact.html">Se connecter</a></li>
+                      <li><a href="{{ path('login') }}">Se connecter</a></li>
+                    {% else %}
+                      <li><a href="{{ path('profile') }}">Profil</a></li>
+                      <li><a href="{{ path('logout') }}">Se déconnecter</a></li>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('admin_home') }}" class="btn btn-success"> Aller sur le back-office </a></li>
+                    {% endif %}
                     </ul>
                   </div>
                 </nav>
@@ -114,7 +124,7 @@
       </div>
     </div>
 
-
+      
 
     
         {% block body %}{% endblock %}

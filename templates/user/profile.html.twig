@@ -2,8 +2,12 @@
 
 {% block title %}page du profil {% endblock %}
 
-{% block body %}
+{% block body %} 
 
-page du profil
+<h1>Bonjour {{ app.user.username }}</h1>
+
+Vous êtes {{ app.user.role}}
+
+ 
 
 {% endblock %}

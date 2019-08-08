@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for message in app.flashes('error') %}
+    <div style="background:pink; color: red; border: 1px solid red; border-radius: 3px; padding: 5px">{{ message }}</div>
+    {% endfor %}
+
+<h1> Connexion </h1>
+<!-- 5 impératifs :
+    1/ method = post
+    2/ action = "login_check"
+    3/ name ="_username"
+    4/ name ="_password"
+    5/ value ="lastUsername"
+
+-->
+
+<form method="POST" action="{{ path('login_check') }}">
+
+    <input type="text" placeholder ="Pseudo" name="_username" value="{{ lastUsername }}">
+    <input type="password" placeholder="Mot de passe" name="_password">
+
+    <input type="submit" value="Se connecter">
+
+</form>
+
+{% endblock %}

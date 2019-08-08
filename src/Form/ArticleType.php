@@ -6,6 +6,9 @@ use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ArticleType extends AbstractType
@@ -15,12 +18,21 @@ class ArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('image')
-            ->add('addDate')
-            ->add('categorie')
+            ->add('image', FileType::class)
+            ->add('addDate', DateType::class, [
+                'format' => 'ddMMyyyy'
+            ])
+            ->add('categorie', ChoiceType::class, [
+                'choices' => [
+                    'Nutrition' => 'diet',
+                    'Entraînement' => 'training',
+                    'Idées reçues' => 'stereotype'
+                ]
+            ])
             ->add('submit', SubmitType::class, [
                 'label' => "Ajouter l'article"
             ])
+
         ;
     }
 
