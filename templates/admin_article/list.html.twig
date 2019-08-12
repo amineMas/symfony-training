@@ -1,10 +1,43 @@
 {% extends 'back_layout.html.twig' %}
 
-{% block title %}Hello AdminArticleController!{% endblock %}
+{% block title %}Liste des articles{% endblock %}
 
 {% block body %}
 
 Je suis dans l'espace admin qui affiche la liste des article
 
-{{ dump(articles) }}
+<div class="row p-1 mb-3">
+        <a href="{{ path('admin_article_add') }}" class="btn btn-success">Ajouter un article</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="table-primary"> 
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Mini-description</th>
+                <th>Date d'ajout</th>
+                <th>Image</th>
+                <th>Categorie</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for art in articles %}
+            <tr>
+                <td>{{ art.id }}</td>
+                <td>{{ art.title }}</td>
+                <td>{{ art.description |slice(0,15) }}</td>
+                <td>{{ art.addDate|date('d-m-Y') }}</td>
+                <td>{{ art.image }}</td>
+                <td><img src="{{ art.categorie }}"></td>
+                <td><a href="{{ path('admin_article_update', {'id' : art.id}) }}"><i class="fas fa-edit"></i></a></td>
+                <td><a href="{{ path('admin_article_delete', {'id' : art.id}) }}" onclick="return confirm('Etes-vous certain de vouloir supprimer la article ?')"><i class="fas fa-trash"></i></a></td>
+            </tr>
+        {% endfor %}    
+        </tbody>
+    </table>
+</div>
+
 {% endblock %}

@@ -1,9 +1,45 @@
 {% extends 'back_layout.html.twig' %}
 
-{% block title %}Hello AdminUserController!{% endblock %}
+{% block title %}Liste des membres{% endblock %}
 
 {% block body %}
 Je suis dans l'espace admin qui affiche la liste des membre
 
-{{ dump(users) }}
+<div class="row p-1 mb-3">
+        <a href="{{ path('admin_user_add') }}" class="btn btn-success">Ajouter un membre</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="table-primary"> 
+                <th>Id</th>
+                <th>Username</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Ville</th>
+                <th>Code Postal</th>
+                <th>Date de naissance</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.prenom |capitalize }}</td>
+                <td>{{ user.nom |capitalize }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.zipCode }}</td>
+                <td>{{ user.birthdate|date('d-m-Y') }}</td>
+                <td><a href="{{ path('admin_user_update', {'id' : user.id}) }}"><i class="fas fa-edit"></i></a></td>
+                <td><a href="{{ path('admin_user_delete', {'id' : user.id}) }}" onclick="return confirm('Etes-vous certain de vouloir supprimer ce membre ?')"><i class="fas fa-trash"></i></a></td>
+            </tr>
+        {% endfor %}    
+        </tbody>
+    </table>
+</div>
 {% endblock %}

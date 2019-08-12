@@ -15,7 +15,9 @@ class TrainingType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('image')
-            ->add('addDate')
+            ->add('addDate', DateType::class, [
+                'format' => 'ddMMyyyy'
+            ])
             ->add('submit', SubmitType::class, [
                 'label' => "Ajouter ce programme d'entraînement"
             ])
