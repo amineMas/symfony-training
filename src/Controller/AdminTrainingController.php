@@ -34,14 +34,28 @@ class AdminTrainingController extends AbstractController
      */
     public function trainingAdd(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         //create a new object
-
+        $training = new Training();
+        
         //create form
-
+        $form = $this->createForm(TrainingType::class, $training);
         //traiter info formulaire
+        $form->handleRequest($request);
+
+        if($form -> isSubmitted() && $form -> isValid()){
+            $em-> persist($training);
+                
+            $em -> flush(); // Exécute l'insertion en BDD
+            
+            $this -> addFlash('success', 'L\'entraînement '. $training -> getTitle() . ' a bien été ajouté');
+            return $this -> redirectToRoute('admin_training');
+        } 
 
         // display render
-        return $this->render('admin_training/form.html.twig');
+        return $this->render('admin_training/form.html.twig',[
+            'trainingForm' => $form -> createView(),
+        ]);
     }
 
     /**
@@ -51,13 +65,25 @@ class AdminTrainingController extends AbstractController
     public function trainingUpdate($id, Request $request)
     {
         //retrieve training you want to update
-
+        $em = $this->getDoctrine()->getManager();
+        $training = $em->find(Training::class,$id);
         //create form
-
+        $form = $this->createForm(TrainingType::class, $training);
         //traiter info formulaire
+        $form = handleRequest($request);
 
+        if($form -> isSubmitted() && $form -> isValid()){
+            $em-> persist($training);
+                
+            $em -> flush(); // Exécute l'insertion en BDD
+            
+            $this -> addFlash('success', 'L\'entraînement '. $training -> getTitle() . ' a bien été modifié');
+            return $this -> redirectToRoute('admin_training');
+            }    
         // display render
-        return $this->render('admin_training/form.html.twig');
+        return $this->render('admin_training/form.html.twig',[
+            'trainingForm' => $form -> createView(),
+        ]);
     }
 
     /**
@@ -67,14 +93,18 @@ class AdminTrainingController extends AbstractController
     public function trainingDelete($id, Request $request)
     {
         //retrieve training you want to delete ($id)
+        $em = $this->getDoctrine()->getManager();
+        $training = $em->getRepository(Training::class)->find($id);
 
-        //delete product
+        //delete training
+        $em->remove($training);
+        $em->flush();
 
         // message + redirection
         $this->addFlash('success', 
-        'Le programme d\'entraînement' . $id . ' a bien été supprimé');
+        'L\'entraînement n° ' . $id . ' a bien été supprimé');
 
         return $this->redirectToRoute('admin_training');
     }
-
+    
 }

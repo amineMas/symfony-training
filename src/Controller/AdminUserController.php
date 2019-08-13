@@ -33,14 +33,28 @@ class AdminUserController extends AbstractController
      */
     public function userAdd(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         //create a new object
-
+        $user = new User();
+        
         //create form
-
+        $form = $this->createForm(UserType::class, $user);
         //traiter info formulaire
+        $form->handleRequest($request);
+
+        if($form -> isSubmitted() && $form -> isValid()){
+            $em-> persist($user);
+                
+            $em -> flush(); // Exécute l'insertion en BDD
+            
+            $this -> addFlash('success', 'Le membre '. $user -> getTitle() . ' a bien été ajouté');
+            return $this -> redirectToRoute('admin_user');
+        } 
 
         // display render
-        return $this->render('admin_user/form.html.twig');
+        return $this->render('admin_user/form.html.twig',[
+            'userForm' => $form -> createView(),
+        ]);
     }
 
     /**
@@ -50,13 +64,25 @@ class AdminUserController extends AbstractController
     public function userUpdate($id, Request $request)
     {
         //retrieve user you want to update
-
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->find(User::class,$id);
         //create form
-
+        $form = $this->createForm(UserType::class, $user);
         //traiter info formulaire
+        $form = handleRequest($request);
 
+        if($form -> isSubmitted() && $form -> isValid()){
+            $em-> persist($user);
+                
+            $em -> flush(); // Exécute l'insertion en BDD
+            
+            $this -> addFlash('success', 'L\'entraînement '. $user -> getTitle() . ' a bien été modifié');
+            return $this -> redirectToRoute('admin_user');
+            }    
         // display render
-        return $this->render('admin_user/form.html.twig');
+        return $this->render('admin_user/form.html.twig',[
+            'userForm' => $form -> createView(),
+        ]);
     }
 
     /**
@@ -66,12 +92,16 @@ class AdminUserController extends AbstractController
     public function userDelete($id, Request $request)
     {
         //retrieve user you want to delete ($id)
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->find($id);
 
-        //delete product
+        //delete user
+        $em->remove($user);
+        $em->flush();
 
         // message + redirection
         $this->addFlash('success', 
-        'L\'user' . $id . ' a bien été supprimé');
+        'Le membre n° ' . $id . ' a bien été supprimé');
 
         return $this->redirectToRoute('admin_user');
     }

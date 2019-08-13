@@ -49,7 +49,7 @@ class AdminArticleController extends AbstractController
                 
             $em -> flush(); // Exécute l'insertion en BDD
             
-            $this -> addFlash('success', 'L\'article '. $article -> getTitle() . ' a bien été modifié ajouté');
+            $this -> addFlash('success', 'L\'article '. $article -> getTitle() . ' a bien été ajouté');
             return $this -> redirectToRoute('admin_article');
         } 
 
