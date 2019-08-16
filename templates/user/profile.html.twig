@@ -1,13 +1,75 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}page du profil {% endblock %}
+{% block title %}{{ app.user.username }}{% endblock %}
+
+{% block stylesheets %}
+<style>
+h1{
+    text-align:center;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+{% endblock %}
 
 {% block body %} 
 
-<h1>Bonjour {{ app.user.username }}</h1>
+<p>Bonjour {{ app.user.username }}</p>
 
-Vous êtes {{ app.user.role}}
 
- 
+
+<h1>Votre profil</h1>
+
+  <div class="card mb-5">
+  <img src="img.jpg" alt="" style="width:100%">
+  <h1>{{ app.user.username }}</h1>
+  <p>Nom : {{ app.user.nom }}</p>
+  <p>Prénom : {{ app.user.prenom }}</p>
+  <p>Date de naissance : {{ app.user.birthDate | date('d-m-Y') }}</p> 
+  <p>Email : {{ app.user.nom }}</p> 
+  <p>Ville : {{ app.user.city }}</p> 
+  <p>Code Postal : {{ app.user.zipCode }}</p>   
+  <p><button>Contact</button></p>
+</div> 
+
+<h1>Vos entraînements</h1>
+
+{% for train in app.user.trainings %}
+    <div class="card mb-3">
+        <img src="{{ train.image }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ train.name }}</h5>
+            <p class="card-text">{{train.description}}</p>
+            <p class="card-text"><small class="text-muted"></small></p>
+        </div>
+</div>
+    <div class
+{% endfor %}
 
 {% endblock %}

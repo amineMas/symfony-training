@@ -8,4 +8,15 @@
 
 {{ dump(trainings) }}
 
+{% for train in trainings %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h4 class="card-title">{{ train.name }}</h4>
+            <p class="card-text">{{ train.description |slice(0,30) }}...</p>
+            <a href="{{ path('purchase' , {'idTraining' : train.id} ) }}" class="btn btn-primary">S'abonner</a>
+        </div>
+    </div>
+{% endfor %}
+
 {% endblock %}

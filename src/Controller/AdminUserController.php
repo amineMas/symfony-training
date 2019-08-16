@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -47,7 +48,7 @@ class AdminUserController extends AbstractController
                 
             $em -> flush(); // Exécute l'insertion en BDD
             
-            $this -> addFlash('success', 'Le membre '. $user -> getTitle() . ' a bien été ajouté');
+            $this -> addFlash('success', 'Le membre '. $user -> getUsername() . ' a bien été ajouté');
             return $this -> redirectToRoute('admin_user');
         } 
 
@@ -69,14 +70,14 @@ class AdminUserController extends AbstractController
         //create form
         $form = $this->createForm(UserType::class, $user);
         //traiter info formulaire
-        $form = handleRequest($request);
+        $form->handleRequest($request);
 
         if($form -> isSubmitted() && $form -> isValid()){
             $em-> persist($user);
                 
             $em -> flush(); // Exécute l'insertion en BDD
             
-            $this -> addFlash('success', 'L\'entraînement '. $user -> getTitle() . ' a bien été modifié');
+            $this -> addFlash('success', 'L\'entraînement '. $user -> getUsername() . ' a bien été modifié');
             return $this -> redirectToRoute('admin_user');
             }    
         // display render

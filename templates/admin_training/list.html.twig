@@ -26,7 +26,7 @@ Je suis dans l'espace admin qui affiche la liste des entrainement
             <tr>
                 <td>{{ train.id }}</td>
                 <td>{{ train.name }}</td>
-                <td>{{ train.description |slice(0,15) }}</td>
+                <td>{{ train.description |slice(0,15) }}...</td>
                 <td><img href="{{ asset('images/' ~ train.image) }}" height="50px"></td>
                 <td>{{ train.addDate|date('d-m-Y') }}</td>
                 <td><a href="{{ path('admin_training_update', {'id' : train.id}) }}"><i class="fas fa-edit"></i></a></td>

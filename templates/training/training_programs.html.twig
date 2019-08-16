@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TrainingController!{% endblock %}
+{% block title %}Tout les programmes {% endblock %}
 
 {% block body %}
 
@@ -8,9 +8,25 @@
 
    
 
-    <h1> Page qui affiche les 3 plan d'entrainements </h1>
+<h1> Page qui affiche les 3 plan d'entrainements </h1>
    
-    {{ dump(trainings) }}
-   
+
+
+
+<div class="card-deck">
+{% for train in trainings %}
+<div class="col-3 mb-5">
+    <div class="card">
+        <img class="card-img-top" src="{{ asset('images/') ~ train.image }}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ train.name }}</h5>
+            <p class="card-text">{{ train.description |slice(0,30) }}...</p>
+        </div>
+    </div>
+</div>  
+{% endfor %}
+</div>
+
+
 
 {% endblock %}

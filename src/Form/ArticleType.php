@@ -18,14 +18,16 @@ class ArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('image', FileType::class)
+            ->add('image', FileType::class, [
+                'data_class' => null,
+            ])
             ->add('addDate', DateType::class, [
                 'format' => 'ddMMyyyy'
             ])
             ->add('categorie', ChoiceType::class, [
                 'choices' => [
-                    'Nutrition' => 'diet',
-                    'Entraînement' => 'training',
+                    'Nutrition' => 'nutrition',
+                    'Entraînement' => 'entrainement',
                     'Idées reçues' => 'stereotype'
                 ]
             ])

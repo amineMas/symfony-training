@@ -33,7 +33,7 @@ class TrainingController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(Training::class);
         $lossTrain = $repository->findBy(
-            ['name' => 'perte de poids']
+            ['category' => 'perdre poids']
         );
 
         return $this->render('training/weight_loss.html.twig', ['trainings' => $lossTrain ]);
@@ -49,7 +49,7 @@ class TrainingController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(Training::class);
         $muscleTrain = $repository->findBy(
-            ['name'=>'prise de masse']
+            ['category'=>'prise masse']
         );
 
         return $this->render('training/muscle_gain.html.twig', ['trainings' => $muscleTrain ]);
@@ -65,7 +65,7 @@ class TrainingController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(Training::class);
         $fitTrain = $repository->findBy(
-            ['name'=>'garder la ligne']
+            ['category'=>'garder la ligne']
         );
         return $this->render('training/keep_fit.html.twig', ['trainings' => $fitTrain ]);
 

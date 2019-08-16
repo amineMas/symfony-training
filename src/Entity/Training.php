@@ -43,6 +43,11 @@ class Training
      */
     private $users;
 
+    /**
+     * @ORM\Column(type="string", length=60)
+     */
+    private $category;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -126,6 +131,18 @@ class Training
             $this->users->removeElement($user);
             $user->removeTraining($this);
         }
+
+        return $this;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

@@ -37,7 +37,7 @@ class BlogController extends AbstractController
 
         // we search articles with categorie : training
         $trainingArt = $repository->findBy(
-            ['categorie' => 'training']
+            ['categorie' => 'entrainement']
         );
 
         return $this->render( 'blog/training_articles.html.twig', ['articles' => $trainingArt] );
@@ -54,7 +54,9 @@ class BlogController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Article::class);
 
         // we search articles with categorie : diet
-        $trainingDiet = $repository->findByTitle('diet');
+        $trainingDiet = $repository->findBy(
+            ['categorie' => 'nutrition']
+        );
             
 
         return $this->render('blog/diet_articles.html.twig', ['articles' => $trainingDiet] );

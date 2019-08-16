@@ -48,7 +48,7 @@ class AdminTrainingController extends AbstractController
                 
             $em -> flush(); // Exécute l'insertion en BDD
             
-            $this -> addFlash('success', 'L\'entraînement '. $training -> getTitle() . ' a bien été ajouté');
+            $this -> addFlash('success', 'L\'entraînement '. $training -> getName() . ' a bien été ajouté');
             return $this -> redirectToRoute('admin_training');
         } 
 
@@ -70,14 +70,14 @@ class AdminTrainingController extends AbstractController
         //create form
         $form = $this->createForm(TrainingType::class, $training);
         //traiter info formulaire
-        $form = handleRequest($request);
+        $form->handleRequest($request);
 
         if($form -> isSubmitted() && $form -> isValid()){
             $em-> persist($training);
                 
             $em -> flush(); // Exécute l'insertion en BDD
             
-            $this -> addFlash('success', 'L\'entraînement '. $training -> getTitle() . ' a bien été modifié');
+            $this -> addFlash('success', 'L\'entraînement '. $training -> getName() . ' a bien été modifié');
             return $this -> redirectToRoute('admin_training');
             }    
         // display render

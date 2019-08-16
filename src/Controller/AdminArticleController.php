@@ -71,14 +71,10 @@ class AdminArticleController extends AbstractController
         //create form
         $form = $this->createForm(ArticleType::class, $article);
         //traiter info formulaire
-        $form = handleRequest($request);
+        $form->handleRequest($request);
 
         if($form -> isSubmitted() && $form -> isValid()){
             $em-> persist($article);
-                if($article -> getFile() != NULL){
-                    $article -> removePhoto();
-                    $article -> uploadPhoto();
-                }
             
             $em -> flush(); // Exécute l'insertion en BDD
             

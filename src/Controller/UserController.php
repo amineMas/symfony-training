@@ -64,16 +64,14 @@ class UserController extends AbstractController
     
 
     /**
-     * @Route("/achat/{idTraining}", name="achat")
+     * @Route("/purchase/{idTraining}", name="purchase")
      */
-    public function achat($idTraining)
+    public function purchase($idTraining)
     {
-       // $user = $this -> getUser(); // utilisateur connecté
+        $user = $this -> getUser(); // utilisateur connecté
 
-        // Attention : A supprimer une fois que l'on pourra se connecter
+        
         $em = $this -> getDoctrine() -> getManager();
-        $user = $em -> find(User::class, 35);
-
         $training = $em -> find(Training::class, $idTraining);
 
         $user -> addTraining($training);

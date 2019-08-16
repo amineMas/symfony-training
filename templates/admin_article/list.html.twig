@@ -28,7 +28,7 @@ Je suis dans l'espace admin qui affiche la liste des article
             <tr>
                 <td>{{ art.id }}</td>
                 <td>{{ art.title }}</td>
-                <td>{{ art.description |slice(0,15) }}</td>
+                <td>{{ art.description |slice(0,15) }}...</td>
                 <td>{{ art.addDate|date('d-m-Y') }}</td>
                 <td>{{ art.image }}</td>
                 <td><img src="{{ art.categorie }}"></td>
