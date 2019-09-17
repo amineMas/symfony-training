@@ -4,8 +4,17 @@
 
 {% block body %}
 
-    <h1> Cette page présente tout les articles d'entraînement </h1>
+<h1> Cette page présente tout les articles d'entraînement </h1>
 
-    {{dump(articles)}}
+{% for article in articles %}
+<div class="card" style="width: 18rem;">
+  <img src="{{ article.image }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ article.title }}</h5>
+    <p class="card-text">{{ article.description | slice(0,20) }}</p>
+    <a href="{{ path('show_article', {'id':article.id}) }}" class="btn btn-primary">Lire la suite ...</a>
+  </div>
+</div>
+{% endfor %}
     
 {% endblock %}

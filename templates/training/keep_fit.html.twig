@@ -6,10 +6,11 @@
 
 <h1>Cette page affiche les programmes pour garder la forme</h1>
 
-{{ dump(trainings) }}
 
+<div class="row">
 {% for train in trainings %}
-    <div class="card" style="width: 18rem;">
+<div class="col-4 mb-4">
+    <div class="card" style="width: 25rem;">
         <img class="card-img-top" src="..." alt="Card image cap">
         <div class="card-body">
             <h4 class="card-title">{{ train.name }}</h4>
@@ -17,6 +18,7 @@
             <a href="{{ path('purchase' , {'idTraining' : train.id} ) }}" class="btn btn-primary">S'abonner</a>
         </div>
     </div>
+</div>
 {% endfor %}
-
+</div>
 {% endblock %}

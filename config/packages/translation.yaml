@@ -1,6 +1,7 @@
+#config pour gérer la langue utilisée sur le site
 framework:
-    default_locale: en
+    default_locale: fr # ici on met la langue par défaut
     translator:
         default_path: '%kernel.project_dir%/translations'
         fallbacks:
-            - en
+            - en # ici on met la langue de secours si aucune traduction n'est trouvée

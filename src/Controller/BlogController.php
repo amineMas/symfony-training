@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -13,15 +15,21 @@ class BlogController extends AbstractController
      * @Route("/blog", name="blog_list")
      * localhost:8000/blog
      */
-    public function blogList()
+    public function blogList(Request $request, PaginatorInterface $paginator)
     {
         //1 retrieve all articles
 
         $repository = $this->getDoctrine()->getRepository(Article::class);
-        $articles = $repository->findAll();
+        $queryBuilder = $repository->getAllArticles();
+        
+        $pagination = $paginator->paginate(
+            $queryBuilder, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            6/*limit per page*/
+        );
 
         return $this->render('blog/all_articles.html.twig', [
-            'articles' => $articles
+            'pagination' => $pagination
         ]);
         
     }
@@ -82,6 +90,13 @@ class BlogController extends AbstractController
 
     /**
      * 
-     * @Route("/")
+     * @Route("/blog/show/{id}" , name="show_article")
      */
+    public function show(Article $article){
+        
+        return $this->render('blog/show.html.twig' , [
+            'article' => $article
+        ]);
+    }
+
 }
