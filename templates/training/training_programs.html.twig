@@ -5,19 +5,11 @@
 {% block body %}
 
 
-
-   
-
-<h1> Page qui affiche les 3 plan d'entrainements </h1>
-   
-
-
-
-<div class="card-deck">
+<div class="card-deck mt-5">
 {% for train in trainings %}
 <div class="col-3 mb-5">
     <div class="card">
-        <img class="card-img-top" src="{{ asset('images/') ~ train.image }}" alt="Card image cap">
+        <img class="card-img-top" src="{{ train.image }}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{ train.name }}</h5>
             <p class="card-text">{{ train.description |slice(0,30) }}...</p>

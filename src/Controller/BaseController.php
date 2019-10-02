@@ -35,14 +35,6 @@ class BaseController extends AbstractController
     }
 
     /**
-     * recruitment
-     * @Route("/recruitment/", name="recruitment")
-     */
-    public function recruitment(){
-        return $this->render('base/recruitment.html.twig');
-    }
-
-    /**
      * legal notice
      * @Route("/legal_notice/", name="legal_notice")
      */

@@ -3,39 +3,8 @@
 {% block title %}{{ app.user.username }}{% endblock %}
 
 {% block stylesheets %}
-<style>
-h1{
-    text-align:center;
-}
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
-  margin: auto;
-  text-align: center;
-}
 
-.title {
-  color: grey;
-  font-size: 18px;
-}
 
-button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
-}
-
-button:hover, a:hover {
-  opacity: 0.7;
-}
-</style>
 {% endblock %}
 
 {% block body %} 
@@ -44,11 +13,11 @@ button:hover, a:hover {
 
 
 
-<h1>Votre profil</h1>
+<h2>Votre profil</h2>
 
-  <div class="card mb-5">
+<div class="card mt-2 mb-5">
   <img src="img.jpg" alt="" style="width:100%">
-  <h1>{{ app.user.username }}</h1>
+  <p>{{ app.user.username }}</p>
   <p>Nom : {{ app.user.nom }}</p>
   <p>Prénom : {{ app.user.prenom }}</p>
   <p>Date de naissance : {{ app.user.birthDate | date('d-m-Y') }}</p> 
@@ -61,7 +30,7 @@ button:hover, a:hover {
 <h1>Vos entraînements</h1>
 
 {% for train in app.user.trainings %}
-    <div class="card mb-3">
+    <div class="card mb-5">
         <img src="{{ train.image }}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{ train.name }}</h5>
