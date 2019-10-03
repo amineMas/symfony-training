@@ -30,8 +30,8 @@ Je suis dans l'espace admin qui affiche la liste des article
                 <td>{{ art.title }}</td>
                 <td>{{ art.description |slice(0,15) }}...</td>
                 <td>{{ art.addDate|date('d-m-Y') }}</td>
-                <td>{{ art.image }}</td>
-                <td><img src="{{ art.categorie }}"></td>
+                <td class="w-25"><img src="{{ asset('uploads/' ~ art.image) }}" class="img-thumbnail"></td>
+                <td>{{ art.categorie }}</td>
                 <td><a href="{{ path('admin_article_update', {'id' : art.id}) }}"><i class="fas fa-edit"></i></a></td>
                 <td><a href="{{ path('admin_article_delete', {'id' : art.id}) }}" onclick="return confirm('Etes-vous certain de vouloir supprimer la article ?')"><i class="fas fa-trash"></i></a></td>
             </tr>

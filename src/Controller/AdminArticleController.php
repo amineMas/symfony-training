@@ -45,8 +45,13 @@ class AdminArticleController extends AbstractController
         $form->handleRequest($request);
 
         if($form -> isSubmitted() && $form -> isValid()){
+
+            $image = $article->getImage();
+            $imageName = md5(uniqid()).'.'.$image->guessExtension();
+            $image->move($this->getParameter('upload_directory'), $imageName);
+            $article->setImage($imageName);
+
             $em-> persist($article);
-                
             $em -> flush(); // Exécute l'insertion en BDD
             
             $this -> addFlash('success', 'L\'article '. $article -> getTitle() . ' a bien été ajouté');

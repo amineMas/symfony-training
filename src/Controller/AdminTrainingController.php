@@ -44,6 +44,13 @@ class AdminTrainingController extends AbstractController
         $form->handleRequest($request);
 
         if($form -> isSubmitted() && $form -> isValid()){
+
+            $image = $form->get('image')->getData();
+            $imageName = md5(uniqid()).'.'.$image->guessExtension();
+
+            $image->move($this->getParameter('upload_directory'), $imageName);
+            $training->setImage($imageName);
+
             $em-> persist($training);
                 
             $em -> flush(); // Exécute l'insertion en BDD

@@ -27,7 +27,7 @@ Je suis dans l'espace admin qui affiche la liste des entrainement
                 <td>{{ train.id }}</td>
                 <td>{{ train.name }}</td>
                 <td>{{ train.description |slice(0,15) }}...</td>
-                <td><img href="{{ asset('images/' ~ train.image) }}" height="50px"></td>
+                <td class="w-25"><img src="{{ asset('uploads/' ~ train.image) }}" class="img-thumbnail"></td>
                 <td>{{ train.addDate|date('d-m-Y') }}</td>
                 <td><a href="{{ path('admin_training_update', {'id' : train.id}) }}"><i class="fas fa-edit"></i></a></td>
                 <td><a href="{{ path('admin_training_delete', {'id' : train.id}) }}" onclick="return confirm('Etes-vous certain de vouloir supprimer cet entraînement ?')"><i class="fas fa-trash"></i></a></td>
