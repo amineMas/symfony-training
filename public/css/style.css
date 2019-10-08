@@ -19,6 +19,11 @@
   background-color: #b71c1c;
 }
 
+.navbar.navbar-expand-lg.navbar-dark
+{
+  height: 150px;
+}
+
 .navbar-dark .navbar-nav .nav-link
 {
   color: rgba(255,255,255,1);
@@ -42,7 +47,8 @@
   height: 500px;
 }
 
-.featurette-divider {
+.featurette-divider 
+{
   margin: 5rem 0;
 }
 
@@ -52,13 +58,26 @@
   color: white;
 }
 
-.page-footer a {
+.page-footer a 
+{
   color: white;
 }
 
-.orange-text {
+.orange-text 
+{
   color: #ff9800;
 }
+
+li.nav-item 
+{
+  font-size: 1.5rem;
+}
+
+.dropdown-item
+{
+  font-size: 1.5rem;
+}
+
 
 
 
