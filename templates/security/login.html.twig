@@ -2,24 +2,37 @@
 
 {% block body %}
 
+<div class="container" style="min-height:600px;">
 
 <h1> Connexion </h1>
-<!-- 5 impératifs :
+{# 5 impératifs :
     1/ method = post
     2/ action = "login_check"
     3/ name ="_username"
     4/ name ="_password"
     5/ value ="lastUsername"
 
--->
+#}
 
 <form method="post" action="{{ path('login_check') }}">
+    <div class="row mt-5">
 
-    <input type="text" placeholder ="Pseudo" name="_username" value="{{ last_username }}">
-    <input type="password" placeholder="Mot de passe" name="_password">
+        <div class="col-5">
+            <label for="pseudo">Pseudo</label>
+            <input type="text" placeholder ="Pseudo" name="_username" value="{{ last_username }}" id="pseudo">
+        </div>
 
-    <input type="submit" value="Se connecter">
+        <div class="col-5">
+            <label for="mdp">Mot de passe</label>
+            <input type="password" placeholder="Mot de passe" name="_password" id="mdp">
+        </div>
 
+        <div class="col-2">
+            <input type="submit" class="btn btn-success" value="Se connecter">
+        </div>
+    </div>
 </form>
+
+</div>
 
 {% endblock %}

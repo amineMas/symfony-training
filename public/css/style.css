@@ -31,7 +31,12 @@
 
 .dropdown-menu
 {
-  background-color: #e53935;
+  background-color: #b71c1c;
+}
+
+#navbarNavDropdown
+{
+  background-color: #b71c1c;
 }
 
 .bordure
@@ -77,6 +82,7 @@ li.nav-item
 {
   font-size: 1.5rem;
 }
+
 
 
 
