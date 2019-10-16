@@ -73,12 +73,21 @@ class UserController extends AbstractController
         
         $em = $this -> getDoctrine() -> getManager();
         $training = $em -> find(Training::class, $idTraining);
-
+        
         $user -> addTraining($training);
         $em -> persist($user);
         $em -> flush();
+
+         $this->addFlash(
+             'notice',
+             'Votre programme a été ajouté avec succès'
+         );
         
-        return $this -> render('base/index.html.twig', [
+
+        return $this->redirectToRoute('profile');
+    
+        
+        return $this -> render('training/purchase_validation.html.twig', [
             'user' => $user,
             'training' => $training
         ]);

@@ -18,21 +18,21 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="{{asset('images/img_2.jpg')}}" class="d-block w-100" alt="...">
+        <img src="{{asset('images/crossfit-1963860_1280.jpg')}}" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Perte de poids</h5>
           <p>Vous êtes en surpoids ou êtes mal dans votre peau? Ce programme est fait pour vous!</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="{{asset('images/img_4.jpg')}}" class="d-block w-100" alt="...">
+        <img src="{{asset('images/gym-room-1178293_1280.jpg')}}" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Prendre du muscle</h5>
           <p>Vous voulez vous bâtir un corps de rêve? Testez notre programme </p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="{{asset('images/img_4_colored.jpg')}}" class="d-block w-100" alt="...">
+        <img src="{{asset('images/man-731900_1280.jpg')}}" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Healthy life</h5>
           <p>Si vous souhaitez avoir une bonne hygiène de vie et garder la forme !</p>
@@ -54,39 +54,45 @@
 
 <div class="container">
   <!-- deux dernier article -->
+  {# {{ dump(latestArticles[1]) }} #}
+{% for key, article in latestArticles %}
 
+  {% if key is even %} 
   <div class="row featurette">
       <div class="col-md-7">
-        <h1 class="featurette-heading">And lastly, this one.</h1>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <h1 class="featurette-heading">{{ article.title }}</h1>
+        <p class="lead"> {{ article.description | slice(0,250) }}</p>
       </div>
       <div class="col-md-5">
-        <a href="">
-          <img src="{{ asset('images/dumbbell-1966247_640.jpg') }}" alt="" class="mw-100">
+        <a href="{{ path('show_article', {'id':article.id}) }}">
+          <img src="{{ asset('uploads/' ~ article.image) }}" alt="" class="mw-100">
         </a>
       </div>
   </div>
-
     <hr class="featurette-divider">
-
-    <div class="row featurette">
+  
+  {% else %}
+  <div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h1 class="featurette-heading">Oh yeah, it’s that good.</h1>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <h1 class="featurette-heading">{{ article.title }}</h1>
+        <p class="lead"> {{ article.description | slice(0,250) }}</p>
       </div>
       <div class="col-md-5 order-md-1">
-        <a href="">
-          <img src="{{ asset('images/dumbbells-2465478_640.jpg') }}" alt="" class="mw-100">
+        <a href="{{ path('show_article', {'id':article.id}) }}">
+          <img src="{{ asset('uploads/' ~ article.image) }}" alt="" class="mw-100">
         </a>
       </div>
     </div>
-
     <hr class="featurette-divider">
+    {% endif %}
+{% endfor %}
+{#
+    
 
     <div class="row featurette">
       <div class="col-md-7">
         <h1 class="featurette-heading">And lastly, this one.</h1>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <p class="lead">{{ article.description | slice(0,20) }}</p>
       </div>
       <div class="col-md-5">
         <a href="">
@@ -94,37 +100,27 @@
         </a>
       </div>
     </div>
+    #}
 </div>
 
 <!-- stereotypes -->
-
 <div class="bg-light py-5 mt-5">
   <div class="container">
-    <h1 class="font-weight-bold my-5 text-sm-center text-md-left">Idées reçues ou pas ?</h1>
+    <h1 class="font-weight-bold my-5 text-center">{{ stereotypeArticle.title }}</h1>
     <div class="row">
-      <div class="col-12 col-md-8 mb-5">
-        <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis deleniti unde nesciunt, ut inventore repudiandae. Praesentium odio ex quidem quos debitis autem unde omnis perferendis, repellendus in facere voluptatem animi!<p>
-      </div>
-      <div class="col-12 text-center col-md-4 text-md-right align-self-center">
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-outline-success">
-            <input type="radio" name="options" id="option1" autocomplete="off">Vrai
-          </label>
-          <label class="btn btn-outline-danger">
-            <input type="radio" name="options" id="option2" autocomplete="off">Faux
-          </label>
-        </div>
+      <div class="col-12 mb-5">
+        <p class="text-center">{{ stereotypeArticle.description | slice(0,250) }}<p>
       </div>
     </div>
-  </div>
-</div>
-  <!-- temoignages -->
+    </div>
+    </div> 
+  <!-- Team -->
   
 <section class="text-center">
 
 <div class="container">
   <!-- Section heading -->
-  <h2 class="font-weight-bold my-5 pt-5">Témoignages</h2>
+  <h2 class="font-weight-bold my-5 pt-5">Coaching team</h2>
   <!-- Section description -->
   <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
     Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam
@@ -137,7 +133,7 @@
     <!--Grid column-->
     <div class="col-md-4 mb-5">
 
-      <div class="testimonial">
+      <div class="team">
         <!--Avatar-->
         <div class="avatar mx-auto">
           <img src="https://via.placeholder.com/150" class="rounded-circle img-fluid">
@@ -147,14 +143,6 @@
         <p class="font-weight-normal dark-grey-text">
           <i class="fas fa-quote-left pr-2"></i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
           eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.</p>
-        <!--Review-->
-        <div class="orange-text">
-          <i class="fas fa-star"> </i>
-          <i class="fas fa-star"> </i>
-          <i class="fas fa-star"> </i>
-          <i class="fas fa-star"> </i>
-          <i class="fas fa-star-half-alt"> </i>
-        </div>
       </div>
 
     </div>
@@ -163,7 +151,7 @@
     <!--Grid column-->
     <div class="col-md-4 mb-5">
 
-      <div class="testimonial">
+      <div class="team">
         <!--Avatar-->
         <div class="avatar mx-auto">
           <img src="https://via.placeholder.com/150" class="rounded-circle img-fluid">
@@ -173,14 +161,6 @@
         <p class="font-weight-normal dark-grey-text">
           <i class="fas fa-quote-left pr-2"></i>Ut enim ad minima veniam, quis nostrum exercitationem ullam
           corporis suscipit laboriosam, nisi ut aliquid commodi.</p>
-        <!--Review-->
-        <div class="orange-text">
-          <i class="fas fa-star"> </i>
-          <i class="fas fa-star"> </i>
-          <i class="fas fa-star"> </i>
-          <i class="fas fa-star"> </i>
-          <i class="fas fa-star"> </i>
-        </div>
       </div>
 
     </div>
@@ -189,7 +169,7 @@
     <!--Grid column-->
     <div class="col-md-4 mb-5">
 
-      <div class="testimonial">
+      <div class="team">
         <!--Avatar-->
         <div class="avatar mx-auto">
           <img src="https://via.placeholder.com/150" class="rounded-circle img-fluid">
@@ -199,14 +179,6 @@
         <p class="font-weight-normal dark-grey-text">
           <i class="fas fa-quote-left pr-2"></i>At vero eos et accusamus et iusto odio dignissimos ducimus qui
           blanditiis praesentium voluptatum deleniti atque corrupti.</p>
-        <!--Review-->
-        <div class="orange-text">
-          <i class="fas fa-star"> </i>
-          <i class="fas fa-star"> </i>
-          <i class="fas fa-star"> </i>
-          <i class="fas fa-star"> </i>
-          <i class="far fa-star"> </i>
-        </div>
       </div>
 
     </div>

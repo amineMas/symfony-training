@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Article;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BaseController extends AbstractController
 {
@@ -11,10 +13,22 @@ class BaseController extends AbstractController
      * home page 
      * @Route("/", name="home")
      */
-    public function home()
+    public function home(EntityManagerInterface $em)
     {
+        $repository = $em->getRepository(Article::class);
+
+        $categorie = 'stereotype';
+        $latestArticles = $repository->findLatestArticlesExcept($categorie);
+
+        $stereotypeArticle = $repository->findOneBy(
+            ['categorie' => 'stereotype'],
+            ['addDate' => 'DESC']
+        );
+        
+
         return $this->render('base/index.html.twig', [
-            'controller_name' => 'BaseController',
+            'latestArticles' => $latestArticles,
+            'stereotypeArticle' => $stereotypeArticle,
         ]);
     }
 
