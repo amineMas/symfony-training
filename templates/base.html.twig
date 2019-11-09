@@ -4,18 +4,19 @@
   <meta charset="UTF-8">
   <title>{% block title %}Choose Your Body{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="{{ asset('images/logo3.png') }}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ asset ('css/style.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Graduate&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
   {% block stylesheets %}
   <style>
   body
   {
     font-family: 'Graduate', cursive;
   }
-
   </style>
   {% endblock %}
 </head>
@@ -223,9 +224,6 @@
 
   </div>
   <!-- Footer Links -->
-<div class="cookie-alert">
-   En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies pour vous proposer des contenus et services adaptés à vos centres d’intérêts.<br /><a href="php/accept_cookie.php">OK</a>
-</div>
   <!-- Copyright -->
   <div class="footer-copyright text-center red-darken-4 py-3">
     Copyright &copy; ChooseYourBody - 2019
@@ -241,7 +239,26 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="{{ asset('js/base.js') }}"></script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#aa0000",
+        "text": "#ffdddd"
+      },
+      "button": {
+        "background": "#ff0000"
+      }
+    },
+    "theme": "classic",
+    "content": {
+      "message": "Nous utilisons des cookies pour nous permettre de mieux comprendre comment le site est utilisé. En continuant à utiliser ce site, vous acceptez cette politique.",
+      "dismiss": "Je continue la navigation !",
+      "link": "En savoir plus "
+    }
+  });
+</script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>
