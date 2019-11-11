@@ -25,6 +25,7 @@ class BaseController extends AbstractController
             ['addDate' => 'DESC']
         );
         
+        
 
         return $this->render('base/index.html.twig', [
             'latestArticles' => $latestArticles,
