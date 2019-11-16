@@ -9,13 +9,14 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ asset ('css/style.css') }}">
-  <link href="https://fonts.googleapis.com/css?family=Graduate&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
   {% block stylesheets %}
   <style>
-  body
+  
+  footer.page-footer
   {
-    font-family: 'Graduate', cursive;
+    font-family: Helvetica, sans-serif;
   }
   </style>
   {% endblock %}
@@ -27,15 +28,16 @@
     </div>
 {% endfor %}
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark red-darken-4">
+<nav class="navbar navbar-expand-lg navbar-dark gray-nav">
   <a class="navbar-brand" href="{{ path('home') }}">
-    <img src="{{ asset('images/logo3.png') }}" width="180" height="150" alt="logo">
+    <img src="{{ asset('images/logo-desktop.png') }}" width="140" height="80" alt="logo" class="desktop">
+    <img src="{{ asset('images/logo-mobile.png') }}"  width="100" height="80" alt="logo-mobile" class="mobile">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse justify-content-end flex-grow-1" id="navbarNavDropdown">
-    <ul class="navbar-nav red-darken-4">
+    <ul class="navbar-nav gray-nav">
       <li class="nav-item">
         <a class="nav-link" href="{{ path('home') }}">Accueil</a>
       </li>
@@ -107,7 +109,7 @@
 
         <!-- Grid column -->
         <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-          <h6 class="mb-0">Get connected with us on social networks!</h6>
+          <h6 class="mb-0">Restez au courant de nos nouveautés !</h6>
         </div>
         <!-- Grid column -->
 
@@ -163,19 +165,17 @@
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
         <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Products</h6>
+        <h6 class="text-uppercase font-weight-bold">Informations</h6>
         <hr class="bg-light mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
-          <a href="#!">MDBootstrap</a>
+          <a href="{{ path('legal_notice') }}">Mentions légales</a>
+          
         </p>
         <p>
-          <a href="#!">MDWordPress</a>
+          <a href="{{ path('cookies') }}">Politique de gestion des cookies</a>
         </p>
         <p>
-          <a href="#!">BrandFlow</a>
-        </p>
-        <p>
-          <a href="#!">Bootstrap Angular</a>
+          <a href="#!">Conditions générales de vente</a>
         </p>
 
       </div>
@@ -185,19 +185,19 @@
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
         <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+        <h6 class="text-uppercase font-weight-bold">Navigation</h6>
         <hr class="bg-light mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
-          <a href="#!">Your Account</a>
+          <a href="#!">Nos programmes</a>
         </p>
         <p>
-          <a href="#!">Become an Affiliate</a>
+          <a href="#!">Blog</a>
         </p>
         <p>
-          <a href="#!">Shipping Rates</a>
+          <a href="{{ path('about') }}">A propos de nous</a>
         </p>
         <p>
-          <a href="#!">Help</a>
+          <a href="#!">S'inscrire</a>
         </p>
 
       </div>
@@ -210,11 +210,12 @@
         <h6 class="text-uppercase font-weight-bold">Contact</h6>
         <hr class="bg-light mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
-          <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+          <i class="fas fa-home mr-3"></i> Paris </p>
         <p>
-          <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+          <i class="fas fa-envelope mr-3"></i> aminemastouri@gmail.com 
+        </p>
         <p>
-          <i class="fas fa-phone mr-3"></i> + 01 234 567 88
+          <i class="fas fa-phone mr-3"></i> 06 50 43 57 50
         </p>
       </div>
       <!-- Grid column -->

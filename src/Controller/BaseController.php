@@ -42,11 +42,11 @@ class BaseController extends AbstractController
     }
 
     /**
-     * contacts
-     * @Route("/contacts/", name="contacts")
+     * 
+     * @Route("/cookies/", name="cookies")
      */
-    public function contacts(){
-        return $this->render('base/contacts.html.twig');
+    public function cookiesPolicy(){
+        return $this->render('base/cookies.html.twig');
     }
 
     /**
