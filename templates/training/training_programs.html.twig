@@ -2,23 +2,45 @@
 
 {% block title %}Tout les programmes {% endblock %}
 
+{% block stylesheets %}
+  <style>
+    .img-fluid {
+      height: 500px;
+      width: 750px;
+    }
+  </style>
+{% endblock %}
+ 
 {% block body %}
 
-<div class="container">
+<div class="container py-5">
+    <h1 class="mt-3 text-center">Tout les programmes</h1>
 
-<div class="card-deck mt-5">
-{% for train in trainings %}
-<div class="col-3 mb-5">
-    <div class="card">
-        <img class="card-img-top" src="{{ asset('uploads/' ~ train.image) }}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{ train.name }}</h5>
-            <p class="card-text">{{ train.description |slice(0,30) }}...</p>
+    {% for train in trainings %}
+    <!-- Portfolio Item Heading -->
+    <h2 class="my-5">{{ train.name }}</h2>
+    
+    <!-- Portfolio Item Row -->
+    <div class="row pb-5">
+    
+        <div class="col-md-8">
+        <img class="img-fluid" src="{{ asset('uploads/' ~ train.image) }}" alt="">
         </div>
+    
+        <div class="col-md-4">
+        <h3 class="my-3">Description</h3>
+        <p>{{ train.description |slice(0,100) }}</p>
+        <h3 class="my-3">Details</h3>
+        <ul>
+            <li>Un programme personnalisé et adapté</li>
+            <li>Perdre du gras et tonifier des muscles</li>
+            <li>Bénéficiez de l’expertise d’un coach diplômé d’état</li>
+        </ul>
+        <a href="{{ path('purchase' , {'idTraining' : train.id} ) }}" class="btn btn-danger">S'abonner</a>
+        </div>
+    
     </div>
-</div>  
-{% endfor %}
-</div>
+    {% endfor %}
 
 </div>
 

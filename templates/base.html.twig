@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>{% block title %}Choose Your Body{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" href="{{ asset('images/logo3.png') }}">
+  <link rel="icon" href="{{ asset('images/logo-mobile.png') }}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -28,16 +28,16 @@
     </div>
 {% endfor %}
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark gray-nav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
   <a class="navbar-brand" href="{{ path('home') }}">
     <img src="{{ asset('images/logo-desktop.png') }}" width="140" height="80" alt="logo" class="desktop">
-    <img src="{{ asset('images/logo-mobile.png') }}"  width="100" height="80" alt="logo-mobile" class="mobile">
+    <img src="{{ asset('images/logo-mobile.png') }}"  width="100" height="70" alt="logo-mobile" class="mobile">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse justify-content-end flex-grow-1" id="navbarNavDropdown">
-    <ul class="navbar-nav gray-nav">
+    <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="{{ path('home') }}">Accueil</a>
       </li>
@@ -109,7 +109,7 @@
 
         <!-- Grid column -->
         <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-          <h6 class="mb-0">Restez au courant de nos nouveautés !</h6>
+          <p class="mb-0">Restez au courant de nos nouveautés !</p>
         </div>
         <!-- Grid column -->
 
@@ -152,7 +152,7 @@
       <div class="d-none col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 
         <!-- Content -->
-        <h6 class="text-uppercase font-weight-bold">Company name</h6>
+        <p class="text-uppercase font-weight-bold">Company name</p>
         <hr class="bg-light mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
           consectetur
@@ -165,7 +165,7 @@
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
         <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Informations</h6>
+        <p class="text-uppercase font-weight-bold">Informations</p>
         <hr class="bg-light mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
           <a href="{{ path('legal_notice') }}">Mentions légales</a>
@@ -185,7 +185,7 @@
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
         <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Navigation</h6>
+        <p class="text-uppercase font-weight-bold">Navigation</p>
         <hr class="bg-light mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
           <a href="#!">Nos programmes</a>
@@ -207,7 +207,7 @@
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
         <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+        <p class="text-uppercase font-weight-bold">Contact</p>
         <hr class="bg-light mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
           <i class="fas fa-home mr-3"></i> Paris </p>
@@ -240,7 +240,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="{{ asset('js/base.js') }}"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false" SameSite=Lax></script>
 <script>
   window.cookieconsent.initialise({
     "palette": {

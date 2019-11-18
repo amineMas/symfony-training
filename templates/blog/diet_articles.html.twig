@@ -1,21 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BlogController!{% endblock %}
+{% block title %}Blog nutrition{% endblock %}
+
+{% block stylesheets %}
+  <style>
+    .img-fluid {
+      width: 700px;
+      height: 300px;
+    }
+    hr {
+      border-top: 2px solid rgba(0,0,0,.2);
+    }
+  </style>
+{% endblock %}
 
 {% block body %}
 
-    
-<h1> Cette page présente tout les articles de nutrition</h1>
+<div class="container py-5">
 
-{% for article in articles %}
-<div class="card" style="width: 18rem;">
-  <img src="{{ asset('uploads/' ~ article.image) }}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{ article.title }}</h5>
-    <p class="card-text">{{ article.description | slice(0,20) }}</p>
-    <a href="{{ path('show_article', {'id':article.id}) }}" class="btn btn-primary">Lire la suite ...</a>
+<h1 class="text-center mb-5"> Tout les articles sur la nutrition </h1>
+
+
+  {% for article in articles %}
+<div class="row">
+  <div class="col-md-7">
+    <a href="{{ path('show_article', {'id':article.id}) }}">
+      <img class="img-fluid rounded mb-3 mb-md-0"  src="{{ asset('uploads/' ~ article.image) }}" alt="">
+    </a>
+  </div>
+  <div class="col-md-5">
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.description | slice(0,200) }}</p>
+    <a class="btn btn-danger" href="{{ path('show_article', {'id':article.id}) }}">Lire l'article</a>
   </div>
 </div>
-{% endfor %}
+  <hr>
+  {% endfor %}
+
+
+  
+
+</div>   
 
 {% endblock %}

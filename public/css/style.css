@@ -1,8 +1,8 @@
-/** colors */
 body
-  {
-    font-family: 'Open Sans', sans-serif !important;
-  }
+{
+  font-family: 'Open Sans', sans-serif !important;
+}
+
 .red-darken-1
 {
   background-color: #e53935 !important;
@@ -23,13 +23,13 @@ body
   background-color: #b71c1c;
 }
 
-.gray-nav {
-  background-color: #212529;
+.bg-black {
+  background-color: black;
 }
 
 .navbar.navbar-expand-lg.navbar-dark
 {
-  height: 100px;
+  height: 90px;
 }
 
 .navbar-dark .navbar-nav .nav-link
@@ -44,7 +44,7 @@ body
 
 .dropdown-menu
 {
-  background-color: #212529;
+  background-color: black;
 }
 
 .dropdown-menu .dropdown-item {
@@ -58,9 +58,13 @@ body
 
 #navbarNavDropdown
 {
-  background-color: #212529;
+  background-color: black;
   padding-left: 20px;
   z-index: 100;
+}
+
+button:focus {
+  outline: none;
 }
 
 .bordure
@@ -73,13 +77,25 @@ body
 
 .carousel-inner .carousel-item img
 {
-  max-height: 750px;
+  max-height: 500px;
+}
+
+.featurette-heading {
+  font-size: 2.5rem;
+}
+
+.lead {
+  font-size: 1.5rem;
 }
 
 .featurette-divider 
 {
   margin: 5rem 0;
   border-bottom: 2px solid lightgrey;
+}
+
+.btn {
+  font-size: 1.3rem;
 }
 
 .page-footer 
@@ -101,10 +117,18 @@ body
 
 
 
+@media (max-width: 1199.98px) {}
 
 
-
-
+@media (max-width: 991.98px) {
+  .featurette-heading {
+    font-size: 2rem important!;
+  }
+  
+  .lead {
+    font-size: 1.3rem important!;
+  }
+}
 
 
 @media (max-width: 767.98px) { 
@@ -118,6 +142,8 @@ body
   }
 
 }
+
+@media (max-width: 575.98px) {}
 
 
 
