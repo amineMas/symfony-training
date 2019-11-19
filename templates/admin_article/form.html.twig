@@ -3,6 +3,32 @@
 {% block body %}
 <h1> Formulaire pour ajouter un article </h1>
 
-    {{ form(articleForm) }}
+    {{ form_start(articleForm) }}
+
+    <div class="form-group">
+		{{ form_row(articleForm.title) }}
+    </div>
+
+    <div class="form-group">
+		{{ form_row(articleForm.description) }}
+    </div>
+
+    <div class="form-group">
+		{{ form_row(articleForm.image) }}
+    </div>
+    
+    <div class="form-group">
+		{{ form_row(articleForm.addDate) }}
+    </div>
+
+    <div class="form-group">
+		{{ form_row(articleForm.categorie) }}
+    </div>
+
+
+    {{ form_row(articleForm.submit) }}
+
+    {{ form_end(articleForm) }}
+
 
 {% endblock %}
