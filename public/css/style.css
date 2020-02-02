@@ -25,17 +25,12 @@ body
 
 .bg-black {
   background-color: black;
-}
-
-.navbar.navbar-expand-lg.navbar-dark
-{
-  height: 90px;
+  height: 80px;
 }
 
 .navbar-dark .navbar-nav .nav-link
 {
   color: rgba(255,255,255,1);
-  font-size: 1.25rem;
 }
 
 .navbar-brand img.mobile {
@@ -49,7 +44,6 @@ body
 
 .dropdown-menu .dropdown-item {
   color: white;
-  font-size: 1.25rem;
 }
 
 .dropdown-menu .dropdown-item:hover {
@@ -77,15 +71,11 @@ button:focus {
 
 .carousel-inner .carousel-item img
 {
-  max-height: 500px;
+  max-height: 400px;
 }
 
 .featurette-heading {
-  font-size: 2.5rem;
-}
-
-.lead {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .featurette-divider 
@@ -121,12 +111,12 @@ button:focus {
 
 
 @media (max-width: 991.98px) {
-  .featurette-heading {
-    font-size: 2rem !important;
+  .btn {
+    font-size: 1rem;
   }
-  
-  .lead {
-    font-size: 1.3rem !important;
+
+  .featurette img {
+    margin-top: 64px;
   }
 }
 
@@ -141,9 +131,109 @@ button:focus {
     display: none;
   }
 
+  .carousel-inner .carousel-item img
+  {
+    max-height: 300px;
+  }
+
+  .featurette img {
+    margin-top: 30px;
+  }
+
+  .featurette-heading {
+    font-size: 1.8rem;
+  }
+
+  .lead {
+    font-size: 1.1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .featurette-divider 
+{
+  margin: 3rem 0;
+  border-bottom: unset;
 }
 
-@media (max-width: 575.98px) {}
+.bordure {
+  height: 6px;
+}
+
+}
+
+@media (max-width: 575.98px) {
+
+  img.mobile {
+    width: 70px;
+    height: 50px;
+  }
+
+  .navbar-toggler {
+    font-size: 1rem;
+  }
+
+  .featurette-heading {
+    font-size: 1.3rem;
+  }
+
+  .lead {
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+  }
+
+  .carousel-inner .carousel-item img
+  {
+    max-height: 230px;
+  }
+
+  .carousel-indicators li {
+    width: 20px;
+  }
+
+  .bg-black
+  {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .bordure {
+    height: 4px;
+    margin-bottom: 2rem;
+  }
+
+  .container.my-3.my-sm-5 li { /* pour la page cookies */
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 500px){
+    p {
+      font-size: 0.7rem;
+    }
+  }
+  
+}
 
 
 

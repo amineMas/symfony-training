@@ -59,11 +59,11 @@
 
   {% if key is even %} 
   <div class="row featurette">
-      <div class="col-md-7">
+      <div class="col-md-6">
         <p class="featurette-heading">{{ article.title }}</p>
         <p class="lead"> {{ article.description | slice(0,250) }}</p>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-6">
         <a href="{{ path('show_article', {'id':article.id}) }}">
           <img src="{{ asset('uploads/' ~ article.image) }}" alt="" class="mw-100">
         </a>
@@ -73,11 +73,11 @@
   
   {% else %}
   <div class="row featurette">
-      <div class="col-md-7 order-md-2">
+      <div class="col-md-6 order-md-2">
         <p class="featurette-heading">{{ article.title }}</p>
         <p class="lead"> {{ article.description | slice(0,250) }}</p>
       </div>
-      <div class="col-md-5 order-md-1">
+      <div class="col-md-6 order-md-1">
         <a href="{{ path('show_article', {'id':article.id}) }}">
           <img src="{{ asset('uploads/' ~ article.image) }}" alt="" class="mw-100">
         </a>
@@ -121,7 +121,7 @@
 
 <div class="container">
   <!-- Section heading -->
-  <h2 class="font-weight-bold my-5 pt-5">Coaching team</h2>
+  <h2 class="font-weight-bold my-5">Coaching team</h2>
   <!-- Section description -->
   <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
     Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam

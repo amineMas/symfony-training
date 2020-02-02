@@ -59,9 +59,10 @@ class ArticleType extends AbstractType
                     ])
                 ]
             ])
-            ->add('addDate', BirthdayType::class, [
+            ->add('addDate', DateType::class, [
                 'required' => false,
                 'format' => 'd-M-y',
+                'years' => range(date('Y'), 1910),
                 'label' => 'Date d\'ajout',
                 'constraints' => [
                     new NotBlank(['message' => 'Entrez une date'])

@@ -5,10 +5,17 @@
 {% block body %}
 
 <div class="container">
-<h1 class="my-5">Formulaire d'inscription </h1>
+<h1 class="my-3 my-sm-5">Formulaire d'inscription </h1>
 {{ form_start(userForm) }}
 
+    
 
 {{ form_end(userForm) }}
 </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    //$("#{{ userForm.username.vars.id }}").attr("type","number");
+</script>
 {% endblock %}

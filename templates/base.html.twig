@@ -28,7 +28,7 @@
     </div>
 {% endfor %}
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+<nav class="navbar navbar-expand-md navbar-dark bg-black">
   <a class="navbar-brand" href="{{ path('home') }}">
     <img src="{{ asset('images/logo-desktop.png') }}" width="140" height="80" alt="logo" class="desktop">
     <img src="{{ asset('images/logo-mobile.png') }}"  width="100" height="70" alt="logo-mobile" class="mobile">
@@ -99,7 +99,7 @@
 {% block body %}{% endblock %}
 
 <!-- Footer -->
-<footer class="page-footer mt-5">
+<footer class="page-footer mt-md-5 mt-sm-2">
 
   <div class="social-network">
     <div class="container">
@@ -143,17 +143,17 @@
   </div>
 
   <!-- Footer Links -->
-  <div class="container text-center text-md-left mt-5">
+  <div class="container text-center text-md-left mt-md-4">
 
     <!-- Grid row -->
-    <div class="row mt-3">
+    <div class="row mt-sm-3">
 
       <!-- Grid column -->
       <div class="d-none col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 
         <!-- Content -->
         <p class="text-uppercase font-weight-bold">Company name</p>
-        <hr class="bg-light mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <hr class="bg-light mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
           consectetur
           adipisicing elit.</p>
@@ -162,11 +162,11 @@
       <!-- Grid column -->
 
       <!-- Grid column -->
-      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-2 mb-sm-4">
 
         <!-- Links -->
         <p class="text-uppercase font-weight-bold">Informations</p>
-        <hr class="bg-light mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <hr class="bg-light mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
           <a href="{{ path('legal_notice') }}">Mentions légales</a>
           
@@ -182,11 +182,11 @@
       <!-- Grid column -->
 
       <!-- Grid column -->
-      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-2 mb-sm-4">
 
         <!-- Links -->
         <p class="text-uppercase font-weight-bold">Navigation</p>
-        <hr class="bg-light mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <hr class="bg-light mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
           <a href="#!">Nos programmes</a>
         </p>
@@ -204,7 +204,7 @@
       <!-- Grid column -->
 
       <!-- Grid column -->
-      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-2 mb-sm-4">
 
         <!-- Links -->
         <p class="text-uppercase font-weight-bold">Contact</p>
@@ -227,7 +227,9 @@
   <!-- Footer Links -->
   <!-- Copyright -->
   <div class="footer-copyright text-center red-darken-4 py-3">
+    <p>
     Copyright &copy; ChooseYourBody - 2019
+    </p>
   </div>
   <!-- Copyright -->
 
