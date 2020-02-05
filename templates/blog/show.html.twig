@@ -5,12 +5,18 @@
     article p {
       font-size: 1.5rem;
     }
+
+    .card-img-top {
+      max-width: 720px;
+    }
+
+
   </style>
 {% endblock %}
 
 {% block body %}
 
-<header class="container pt-5">
+<header class="container pt-5 text-center">
   <h1 class="text-center">{{ article.title }}</h1>
   <img src="{{ asset('uploads/' ~ article.image) }}" class="card-img-top pt-5" alt="..."  height="400">
 </header>

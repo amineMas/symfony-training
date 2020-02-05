@@ -107,6 +107,8 @@ button:focus {
 
 
 
+
+
 @media (max-width: 1199.98px) {}
 
 
@@ -125,6 +127,7 @@ button:focus {
 
   .navbar-brand img.mobile {
     display: block;
+    height: 60px;
   }
 
   .navbar-brand img.desktop {
@@ -164,6 +167,10 @@ button:focus {
 
 .bordure {
   height: 6px;
+}
+
+.avatar img {
+  max-width: 300px;
 }
 
 }
@@ -226,13 +233,17 @@ button:focus {
   .container.my-3.my-sm-5 li { /* pour la page cookies */
     font-size: 0.8rem;
   }
-
-  @media (max-width: 500px){
-    p {
-      font-size: 0.7rem;
-    }
-  }
   
+}
+
+@media (max-width: 500px){
+  p {
+    font-size: 0.7rem;
+  }
+
+  .avatar img {
+    max-width: 200px;
+  }
 }
 
 
